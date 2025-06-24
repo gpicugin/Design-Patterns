@@ -6,4 +6,5 @@ CONFIG -= qt
 
 SUBDIRS += \
     AbstractFactory \
+    Builder \
     Factory
