@@ -5,4 +5,5 @@ CONFIG -= qt
 
 
 SUBDIRS += \
+    AbstractFactory \
     Factory
