@@ -1,4 +1,5 @@
 #include <iostream>
+#include <QDebug>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ private:
 				/* final */
 public:
 				virtual void build()				 = 0;
-				virtual ~Builder() { cout << "destructor of builder \n"; };
+				virtual ~Builder() { qDebug() << "destructor of builder \n"; };
 
 };
 
@@ -55,7 +56,7 @@ public:
 				
 				~ProgrammerBuilder() {
 								delete programmer;
-								cout << "destructor of ProgrammerBuilder \n";
+								qDebug() << "destructor of ProgrammerBuilder \n";
 				};
 };
 

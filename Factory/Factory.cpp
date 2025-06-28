@@ -1,32 +1,33 @@
 #include <iostream>
+#include <QDebug>
 
 using namespace std;
 
 class iDelivier {
     public:
         virtual void deliver() = 0;
-        virtual ~iDelivier() { cout << "delete base\n"; };
+        virtual ~iDelivier() { qDebug() << "delete base\n"; };
 };
 
 class Сourier : public iDelivier {
     public:
         void deliver() {
-            cout << "courier\n";
+            qDebug() << "courier\n";
         }
 };
 
 class Car : public iDelivier {
     public:
         void deliver() {
-                        cout << "Car\n";
+            qDebug() << "Car\n";
         }
-        ~Car() { cout << "delete car\n"; }
+        ~Car() { qDebug() << "delete car\n"; }
 };
 
 class SpaceShip : public iDelivier {
     public:
         void deliver() {
-                        cout << "space ship\n";
+            qDebug() << "space ship\n";
         }
 };
 

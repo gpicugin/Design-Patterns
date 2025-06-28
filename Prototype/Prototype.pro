@@ -4,4 +4,4 @@ CONFIG -= app_bundle
 CONFIG += qt
 
 SOURCES += \
- Builder.cpp
+ Prototype.cpp

@@ -1,10 +1,11 @@
 #include <iostream>
-
+#include <QDebug>
 using namespace std;
 
 class Minivan {
 public:
     virtual void goToFest() = 0;
+    virtual ~Minivan() {qDebug() << "delete Base\n";}
 };
 
 class Sedan {
@@ -28,7 +29,8 @@ public:
 };
 
 class MinivanLada : public Minivan {
-    void goToFest() { cout << "go to fest using lada minivan!\n"; }
+    void goToFest() { qDebug() << "go to fest using lada minivan!\n"; }
+    ~MinivanLada() { qDebug() << "delete minivan lada\n";}
 };
 
 class SedanLada : public Sedan {
