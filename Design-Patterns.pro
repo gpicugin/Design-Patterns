@@ -7,7 +7,8 @@ QT = core
 
 
 SUBDIRS += \
-    AbstractFactory \
-    Builder \
-    Factory \
-    Prototype
+    Creational/AbstractFactory \
+    Creational/Builder \
+    Creational/Factory \
+    Creational/Prototype \
+    Creational/Singleton

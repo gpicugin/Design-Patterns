@@ -19,7 +19,7 @@ public:
         damage = smallSword.damage;
     }
     
-    ~SmallSword() {}
+    ~SmallSword() {qDebug() << __PRETTY_FUNCTION__; }
     
     iSword* clone() {
         return new SmallSword(*this);
