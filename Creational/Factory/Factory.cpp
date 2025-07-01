@@ -3,17 +3,24 @@
 
 using namespace std;
 
+enum delivierType {
+    courier = 0,
+    car,
+    spaceShip    
+};
+
 class iDelivier {
     public:
         virtual void deliver() = 0;
-        virtual ~iDelivier() { qDebug() << "delete base\n"; };
+        virtual ~iDelivier() { qDebug() << "delete base delivier"; };
 };
 
 class Сourier : public iDelivier {
     public:
         void deliver() {
-            qDebug() << "courier\n";
+            qDebug() << "courier";
         }
+    ~Сourier() { qDebug() << "delete courier"; }
 };
 
 class Car : public iDelivier {
@@ -29,43 +36,122 @@ class SpaceShip : public iDelivier {
         void deliver() {
             qDebug() << "space ship\n";
         }
+    ~SpaceShip() { qDebug() << "delete spaceShip\n"; }
 };
+
 
 
 class iCompany {
     public:
-        void deliver() {
-            iDelivier* delivier = createDelivier();
+        void deliver(enum delivierType del) {
+            iDelivier* delivier = createDelivier(del);
             delivier->deliver();
             delete delivier;
         }
+    virtual ~iCompany() { qDebug() << "delete base company";}
     private:
-        virtual	iDelivier* createDelivier() = 0;
+        virtual	iDelivier* createDelivier(enum delivierType) = 0;
 };
 
 class Amazon : public iCompany {
-    public:
+public:
+    ~Amazon() { qDebug() << "delete Amazon";}
 
-    private:
-        iDelivier* createDelivier(){ return new Car;}
+private:
+    iDelivier* createDelivier(enum delivierType delivier)
+    { 
+        qDebug() << __PRETTY_FUNCTION__;
+        switch (delivier) 
+        {
+        case delivierType::courier :
+        {
+            return new Сourier;
+            break;
+        }
+        case delivierType::car :
+        {
+            return new Car;                
+            break;
+        }
+        case delivierType::spaceShip :
+        {
+            return new SpaceShip;        
+            break;
+        }
+        default:
+        {
+            return new Сourier;
+            break;
+        }
+        }
+    }
 };
 
-class Apple : public iCompany {
+class Apple : public iCompany 
+{
     private:
-        iDelivier* createDelivier(){ return new Сourier;}
+    iDelivier* createDelivier(enum delivierType delivier)
+    { 
+        switch (delivier) {
+            case delivierType::courier :
+            {
+                return new Сourier;
+                break;
+            }
+            case delivierType::car :
+            {
+                return new Car;                
+                break;
+            }
+            case delivierType::spaceShip :
+            {
+                return new SpaceShip;        
+                break;
+            }
+            default:
+            {
+                return new Сourier;
+                break;
+            }
+        }
+    }
 };
 
-class SpaceX : public iCompany {
+class SpaceX : public iCompany 
+{
     private:
-        iDelivier* createDelivier(){ return new SpaceShip;}
+    iDelivier* createDelivier(enum delivierType delivier)
+    { 
+        switch (delivier) 
+        {
+            case delivierType::courier :
+            {
+                return new Сourier;
+                break;
+            }
+            case delivierType::car :
+            {
+                return new Car;                
+                break;
+            }
+            case delivierType::spaceShip :
+            {
+                return new SpaceShip;        
+                break;
+            }
+            default:
+            {
+                return new Сourier;
+                break;
+            }
+        }
+    }
 };
 
 
 int main()
 {
-
     Amazon amazon;
-    amazon.deliver();
-
+    amazon.deliver(delivierType::car);
     return 0;
 }
