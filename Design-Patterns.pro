@@ -7,4 +7,5 @@ QT = core
 
 
 SUBDIRS += \
-    Creational    
+    Creational \
+    Structural \

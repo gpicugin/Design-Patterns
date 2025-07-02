@@ -5,19 +5,19 @@ using namespace std;
 
 class Builder {
 private:
-				/* same things */
-				virtual void setTable()  = 0;
-				virtual void setPC()				 = 0;
-				virtual void setChair()  = 0;
-				/* differrent things */
-				virtual void setMonitor() = 0;
-				virtual void setPaper()			= 0;
-				virtual void setPhone()	  = 0;
-				virtual void setCalc()			 = 0;
-				/* final */
+    /* same things */
+    virtual void setTable()  = 0;
+    virtual void setPC()     = 0;
+    virtual void setChair()  = 0;
+    /* differrent things */
+    virtual void setMonitor() = 0;
+    virtual void setPaper()   = 0;
+    virtual void setPhone()	  = 0;
+    virtual void setCalc()    = 0;
+    /* final */
 public:
-				virtual void build()				 = 0;
-				virtual ~Builder() { qDebug() << "destructor of builder \n"; };
+    virtual void build()      = 0;
+    virtual ~Builder() { qDebug() << "destructor of builder \n"; }
 
 };
 
@@ -32,32 +32,32 @@ class Accountant;
 class ProgrammerBuilder : public Builder 
 {
 private:
-				Programmer* programmer;
+    Programmer* programmer;
 public:
-				void setTable() { };
-				void setPC() { };
-				void setChair() { };
-				void setMonitor() { };
-				void setPaper() { };
-				void setPhone() { };
-				void setCalc() { };
-				
-				void build() {
-								setTable();
-								setPC();
-								setChair();
-								setMonitor();
-				}
-				
-				Programmer* getResult() {
-								programmer = new Programmer();
-								return programmer;
-				};
-				
-				~ProgrammerBuilder() {
-								delete programmer;
-								qDebug() << "destructor of ProgrammerBuilder \n";
-				};
+    void setTable() { }
+    void setPC() { }
+    void setChair() { }
+    void setMonitor() { }
+    void setPaper() { }
+    void setPhone() { }
+    void setCalc() { }
+
+    void build() {
+        setTable();
+        setPC();
+        setChair();
+        setMonitor();
+    }
+
+    Programmer* getResult() {
+        programmer = new Programmer();
+        return programmer;
+    }
+
+    ~ProgrammerBuilder() {
+        delete programmer;
+        qDebug() << "destructor of ProgrammerBuilder \n";
+    }
 };
 
 class EngineerBuilder;
@@ -66,17 +66,17 @@ class AccountantBuilder;
 
 class Director {
 private:
-				Builder* m_builder;
+    Builder* m_builder;
 public:
-				Director(Builder* builder) { m_builder = builder; };
+    Director(Builder* builder) { m_builder = builder; }
 };
 
 
 int main()
 {
-				ProgrammerBuilder* pB = new ProgrammerBuilder();
-				Director director(pB);
-				pB->build();
-				delete pB;
-				return 0;
+    ProgrammerBuilder* pB = new ProgrammerBuilder();
+    Director director(pB);
+    pB->build();
+    delete pB;
+    return 0;
 }
