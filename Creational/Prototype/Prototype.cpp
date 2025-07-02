@@ -7,10 +7,12 @@ class iSword {
 public:
     virtual iSword* clone() = 0;
     virtual void damaged() = 0;
-    virtual ~iSword() { qDebug() << __PRETTY_FUNCTION__; };
+    virtual ~iSword() { qDebug() << __PRETTY_FUNCTION__; }
 };
 
-class SmallSword : public iSword {
+class SmallSword : public iSword
+{
+
 private:
     int damage;
 public:
@@ -30,9 +32,11 @@ public:
     }
 }; 
 
-class Longsword : public iSword {
+class Longsword : public iSword
+{
 private:
     int damage;
+
 public:
     Longsword() : damage(2) {}
     Longsword(const Longsword& Longsword) {
@@ -47,9 +51,11 @@ public:
     }
 };
 
-class Zweihander : public iSword {
+class Zweihander : public iSword
+{
 private:
     int damage;
+
 public:
     Zweihander() : damage(3) {}
     Zweihander(const Zweihander& Zweihander) {
