@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Adapter \
-    Bridge
+    Bridge \
+    Composite
