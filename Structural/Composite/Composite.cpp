@@ -31,9 +31,15 @@ public:
 };
 class Soldier : public Warrior
 {
-    virtual void executeOrder() override { qDebug() << "Sir, yes Sir!!";}
+    virtual void executeOrder() override { qDebug() << "Sir, yes Sir!!" << number; Soldier::inc();}
     ~Soldier() { qDebug() << "soldier died...."; }
+    public:
+        static int number;
+        static void inc() { number++;}
+
 };
+
+int Soldier::number = 1;
 
 class Major : public Squad
 {
@@ -83,7 +89,7 @@ int main()
     Squad* squad = new Squad;
     General* general = new General;
     squad->add(general);
-    squad->add(new Soldier);
+    squad->add(new General);
     squad->executeOrder();
     delete squad;
     return 0;
